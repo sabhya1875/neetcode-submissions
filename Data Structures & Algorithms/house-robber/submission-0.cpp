@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int helper(int n,vector<int> &nums, vector<int> &dp){
+        if (n>=nums.size()) return 0;
+        if (dp[n]!=-1) return dp[n];
+        return dp[n]=max(nums[n]+helper(n+2,nums,dp),helper(n+1,nums,dp));
+        }
+
+
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> dp(n+1,-1);
+        return helper(0,nums,dp);
+    }
+};
